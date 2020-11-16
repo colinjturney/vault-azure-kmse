@@ -25,6 +25,8 @@ module "tf-az-vault-infra" {
   arg_id        = module.tf-az-rg.arg_id
 
   tag_creator = var.tag_creator
+  
+  depends_on = [module.tf-az-rg]
 
 }
 
@@ -36,4 +38,6 @@ module "tf-az-key-vault" {
   arg_id        = module.tf-az-rg.arg_id
 
   kv_name_prefix  = var.kv_name_prefix
+
+  depends_on = [module.tf-az-rg]
 }
