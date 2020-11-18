@@ -8,9 +8,9 @@ variable "arg_location" {
     description = "Azure Resource Group Location"
 }
 
-variable "kv_name_prefix" {
+variable "name_prefix" {
     type = string
-    description = "Prefix to apply to the name of the Azure Key Vault"
+    description = "Prefix to apply to the name of created resources"
 }
 
 variable "infra_vnet_address_space" {
