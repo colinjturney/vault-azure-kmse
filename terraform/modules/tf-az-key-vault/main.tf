@@ -40,6 +40,8 @@ resource "azurerm_key_vault" "key_vault_kv" {
   resource_group_name = var.arg_name
   sku_name            = "premium"
   soft_delete_enabled = true
+  purge_protection_enabled = true
+  enabled_for_disk_encryption = true
   tenant_id           = data.azurerm_client_config.current.tenant_id
 
   access_policy {
@@ -73,7 +75,9 @@ resource "azurerm_key_vault" "key_vault_kv" {
       "delete",
       "get",
       "import",
-      "update"
+      "update",
+      "unwrapKey",
+      "wrapKey"
     ]
   }
 }

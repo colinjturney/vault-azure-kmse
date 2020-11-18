@@ -13,3 +13,7 @@ output "client_secret" {
 output "key_collection" {
   value = "${var.kv_name_prefix}-${random_id.keyvault_name.hex}"
 }
+
+output "key_vault_id" {
+  value = azurerm_key_vault.key_vault_kv.id
+}

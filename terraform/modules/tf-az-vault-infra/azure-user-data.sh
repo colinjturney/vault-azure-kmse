@@ -97,7 +97,7 @@ vault write keymgmt/kms/keyvault \
 # Write the keys to Azure Key Vault
 
 vault write keymgmt/kms/keyvault/key/rsa-1 \
-  purpose="encrypt,decrypt" \
+  purpose="encrypt,decrypt,wrap,unwrap" \
   protection="hsm"
 
 vault write keymgmt/kms/keyvault/key/rsa-2 \

@@ -1,7 +1,7 @@
 arg_name        = "ct-vault-azure-kmse-demo"
 arg_location    = "UK South"
 
-kv_name_prefix = "ct-demo"
+name_prefix = "azure-kmse-demo"
 
 infra_vnet_address_space = ["10.0.0.0/16"]
 infra_subnet_address_prefixes = ["10.0.1.0/24"]

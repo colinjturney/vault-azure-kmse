@@ -38,6 +38,10 @@ variable "arg_id" {
     type = string
 }
 
+variable "name_prefix" {
+    type = string
+}
+
 variable "tag_creator" {
     type = string
 }

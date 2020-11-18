@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "virtual_network" {
-    name = "azure-kmse-testing-network"
+    name = "${var.name_prefix}-network"
     
     location            = var.arg_location
     resource_group_name = var.arg_name
@@ -12,7 +12,7 @@ resource "azurerm_virtual_network" "virtual_network" {
 }
 
 resource "azurerm_subnet" "subnet" {
-    name = "azure-kmse-testing-subnet"
+    name = "${var.name_prefix}-subnet"
     
     resource_group_name     = var.arg_name
 
@@ -21,7 +21,7 @@ resource "azurerm_subnet" "subnet" {
 }
 
 resource "azurerm_public_ip" "publicip" {
-    name                         = "azure-kmse-testing-publicip"
+    name    = "${var.name_prefix}-publicip-vault"
     
     location            = var.arg_location
     resource_group_name = var.arg_name
@@ -34,7 +34,7 @@ resource "azurerm_public_ip" "publicip" {
 }
 
 resource "azurerm_network_security_group" "nsg" {
-    name                = "azure-kmse-testing-nsg"
+    name                = "${var.name_prefix}-nsg"
    
     location            = var.arg_location
     resource_group_name = var.arg_name
@@ -57,13 +57,13 @@ resource "azurerm_network_security_group" "nsg" {
 }
 
 resource "azurerm_network_interface" "nic" {
-    name                        = "azure-kmse-testing-nic"
+    name                        = "${var.name_prefix}-nic-vault"
 
     location                    = var.arg_location
     resource_group_name         = var.arg_name
 
     ip_configuration {
-        name                          = "azure-kmse-testing-nic-config"
+        name                          = "${var.name_prefix}-nic-config-vault"
         subnet_id                     = azurerm_subnet.subnet.id
         private_ip_address_allocation = "Dynamic"
         public_ip_address_id          = azurerm_public_ip.publicip.id
@@ -109,7 +109,7 @@ resource "tls_private_key" "ssh" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
-    name                  = "azure-kmse-testing-vm"
+    name                  = "${var.name_prefix}-vm-vault"
 
     location              = var.arg_location
     resource_group_name   = var.arg_name
@@ -118,7 +118,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     size                  = "Standard_B2s"
 
     os_disk {
-        name                    = "myOsDisk"
+        name                    = "${var.name_prefix}-vm-disk-vault"
         caching                 = "ReadWrite"
         storage_account_type    = "Premium_LRS"
     }
